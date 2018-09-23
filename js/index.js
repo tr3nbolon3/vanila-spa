@@ -42,7 +42,7 @@ const app = () => {
 
     const backBtn = mountElement.querySelector('.app-back-button');
     backBtn.addEventListener('click', () => {
-      dispatch(renderSecondForm);
+      dispatch(renderSecondForm, { screan: 'second' });
     });
   };
 
@@ -55,13 +55,13 @@ const app = () => {
       event.preventDefault();
       const { target } = event;
       const formData = getFormData(new FormData(target));
-      dispatch(renderResultTable, formData);
+      dispatch(renderResultTable, { screan: 'result', ...formData });
     });
 
     const backBtn = mountElement.querySelector('.app-back-button');
     backBtn.addEventListener('click', () => {
       const formData = getFormData(new FormData(form));
-      dispatch(renderFirstForm, formData);
+      dispatch(renderFirstForm, { screan: 'first', ...formData });
     });
   };
 
@@ -73,7 +73,7 @@ const app = () => {
       event.preventDefault();
       const { target } = event;
       const formData = getFormData(new FormData(target));
-      dispatch(renderSecondForm, formData);
+      dispatch(renderSecondForm, { screan: 'second', ...formData });
     });
   };
 
