@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/index.css">
+  <title>Form</title>
+</head>
+<body>
+  <div id="app"></div>
+
+  <script id="firstForm" type="text/x-handlebars-template">
+    <form class="app-form">
+      <label class="app-form__input-container">Имя: <input value="{{state.firstname}}" required autofocus type="text" name="firstname" class="app-form__input"></label>
+      <label class="app-form__input-container">Фамилия: <input value="{{state.lastname}}" required type="text" name="lastname" class="app-form__input"></label>
+      <button>Далее</button>
+    </form>
+  </script>
+
+  <script id="secondForm" type="text/x-handlebars-template">
+    <button class="app-back-button">Назад</button>
+    <form class="app-form">
+      <label class="app-form__input-container">Дата рождения: <input value="{{state.birthday}}" required type="date" name="birthday" class="app-form__input"></label>
+      <label class="app-form__input-container">E-Mail: <input value="{{state.email}}" required type="email" name="email" class="app-form__input"></label>
+      <label class="app-form__input-container">Страна:
+        <select name="country" required>
+          {{#each countries}}
+            {{#if_eq this state.country}}
+              <option selected value={{this}}>{{this}}</option>
+            {{else}}
+              <option value={{this}}>{{this}}</option>
+            {{/if_eq}}
+          {{/each}}
+        </select>
+      </label>
+      <label class="app-form__input-container">Город: <input value="{{state.city}}" required type="text" name="city" class="app-form__input"></label>
+      <button>Зарегистроваться</button>
+    </form>
+  </script>
+
+  <script id="resultTable" type="text/x-handlebars-template">
+    <button class="app-back-button">Назад</button>
+    <p>Регистрация прошла успешна. Ваши данные: </p>
+    <table>
+      <tr>
+        <td>Имя: </td>
+        <td>{{state.firstname}}</td>
+      </tr>
+      <tr>
+        <td>Фамилия: </td>
+        <td>{{state.lastname}}</td>
+      </tr>
+      <tr>
+        <td>Дата рождения: </td>
+        <td>{{state.birthday}}</td>
+      </tr>
+      <tr>
+        <td>E-mail: </td>
+        <td>{{state.email}}</td>
+      </tr>
+      <tr>
+        <td>Страна: </td>
+        <td>{{state.country}}</td>
+      </tr>
+      <tr>
+        <td>Город: </td>
+        <td>{{state.city}}</td>
+      </tr>
+    </table>
+  </script>
+
+  <script src="./deps/handlebars-v4.0.12.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+</html>
